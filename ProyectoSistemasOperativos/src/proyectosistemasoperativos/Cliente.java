@@ -51,4 +51,9 @@ public class Cliente {
     public double getSaldo() {
         return saldo;
     }
+
+    @Override
+    public String toString() {
+        return "Cliente{" + "cedula=" + cedula + ", nombre=" + nombre + ", apellido=" + apellido + ", correo=" + correo + ", numeroTarjeta=" + numeroTarjeta + ", CVV=" + CVV + ", saldo=" + saldo + '}';
+    }
 }

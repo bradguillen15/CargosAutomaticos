@@ -13,7 +13,8 @@ public class DataBase {
             laConexion = elPool.theDataSource.getConnection();
             if (laConexion != null) {
                 Cliente elCliente = CargaCliente(theCardNumber, theCVV);
-                    IntentaCargoAutomatico(elCliente, theAmountOfMoney, theInstitution);
+                    //IntentaCargoAutomatico(elCliente, theAmountOfMoney, theInstitution);
+                    System.out.println(elCliente);
             }
         } catch (SQLException elSQLException) {
             System.out.println(elSQLException);
@@ -26,7 +27,7 @@ public class DataBase {
         }
     }
     
-    private Cliente CargaCliente(String theCardNumber, String theCVV) {
+    public Cliente CargaCliente(String theCardNumber, String theCVV) {
         try {
             String theQuery = "SELECT *"
                     + " FROM cliente "
@@ -35,7 +36,7 @@ public class DataBase {
             Statement theStatement = laConexion.createStatement();
             ResultSet theResult = theStatement.executeQuery(theQuery);
             Cliente elCliente = null;
-            if (theResult.next()) {
+            while (theResult.next()) {
                 elCliente = new Cliente(
                         theResult.getString("cedulaCliente"),
                         theResult.getString("nombreCliente"),
